@@ -2,7 +2,9 @@ import java.util.Iterator;
 
 public class WordIterator implements Iterator<String> {
 
-    // KONSTRUKTOR
+    public WordIterator(FileContent fileContent) {
+        
+    }
 
     @Override
     public boolean hasNext() {
