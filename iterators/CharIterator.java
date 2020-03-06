@@ -4,20 +4,26 @@ import java.util.Iterator;
 
 public class CharIterator implements Iterator<String> {
 
+    private String fileContentString;
+    private String[] fileContentArray;
+    private int count;
+    
     public CharIterator(FileContent fileContent) {
-
+        this.fileContentString = fileContent.fileContentString.toUpperCase();
+        this.fileContentString.replaceAll("\\s+", "");
+        fileContentArray = fileContentString.split("");
+        count = 0;
     }
 
     @Override
     public boolean hasNext() {
-        // Dodać treść
-        return false;
+        return fileContentArray[count] != null;
     }
 
     @Override
     public String next() {
-        // Dodać treść
-        return null;
+        return fileContentArray[count++];
     }
 
 }
+// czemu nie każe mi implementować np. remove?

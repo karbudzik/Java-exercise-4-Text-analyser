@@ -4,20 +4,24 @@ import java.util.Iterator;
 
 public class WordIterator implements Iterator<String> {
 
+    private String fileContentString;
+    private String[] fileContentArray;
+    private int count;
+
     public WordIterator(FileContent fileContent) {
-        
+        this.fileContentString = fileContent.fileContentString.toUpperCase();
+        fileContentArray = fileContentString.split("\\s+");
+        count = 0;
     }
 
     @Override
     public boolean hasNext() {
-        // Dodać treść
-        return false;
+        return fileContentArray[count] != null;
     }
 
     @Override
     public String next() {
-        // Dodać treść
-        return null;
+        return fileContentArray[count++];
     }
 
 }

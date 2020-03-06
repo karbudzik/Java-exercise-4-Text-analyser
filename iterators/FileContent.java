@@ -8,12 +8,11 @@ import java.util.Scanner;
 public class FileContent implements IterableText {
     
     private String fileName;
-    
-    private String fileContent;
+    String fileContentString;
 
     public FileContent(String name) {
         fileName = name;
-        fileContent = "";
+        fileContentString = "";
         try {
             readFile(fileName);
         } catch (FileNotFoundException e) {
@@ -24,24 +23,23 @@ public class FileContent implements IterableText {
     private void readFile(String name) throws FileNotFoundException {
         File myFile = new File(fileName);
         Scanner myReader = new Scanner(myFile);
-        fileContent = myReader.useDelimiter("\\A").next();
+        fileContentString = myReader.useDelimiter("\\A").next();
         myReader.close();
     }
 
     @Override
     public Iterator<String> charIterator() {
-        Iterator<String> myIterator = new CharIterator(new FileContent(fileName));
+        Iterator<String> myIterator = new CharIterator(this);
         return myIterator;
     }
 
     @Override
     public Iterator<String> wordIterator() {
-        Iterator<String> myIterator = new WordIterator(new FileContent(fileName));
+        Iterator<String> myIterator = new WordIterator(this);
         return myIterator;
     }
 
     public String getFileName() {
         return fileName;
     }
-
 }    

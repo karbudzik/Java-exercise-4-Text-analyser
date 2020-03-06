@@ -29,5 +29,9 @@ public class View {
              System.out.println("Key = " + entry.getKey() +  ", Value = " + entry.getValue()); 
         } 
     }
+
+    public static void printName(String name) {
+        System.out.println("---" + name + "---");
+    }
 }
     

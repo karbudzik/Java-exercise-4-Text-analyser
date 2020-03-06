@@ -1,6 +1,3 @@
-# Text Analyser
-Tool for lexical analysis of text data
-
 ## Sample output
 `---text1.tx--- `    name of the analyzed file
 

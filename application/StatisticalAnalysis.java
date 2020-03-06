@@ -5,15 +5,26 @@
 
 package application;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
+
+
 public class StatisticalAnalysis {
+    
+    private List<String> elements;
+// dodać iterator jako pole
     public StatisticalAnalysis(Iterator<String> iterator) {
-        // treść
+        elements = new ArrayList<String>(); // dać listę z iteratora?
     };
     
+    private void turnStringToList(String content) {
+
+    }
+
     public int countOf(String... elems) {
         //Returns sum of all occurrences (in the dataset) of the elements 
         //given as arguments ( elems). 
