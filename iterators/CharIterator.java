@@ -17,7 +17,7 @@ public class CharIterator implements Iterator<String> {
 
     @Override
     public boolean hasNext() {
-        return fileContentArray[count] != null;
+        return  count < fileContentArray.length;
     }
 
     @Override

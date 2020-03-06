@@ -1,41 +1,62 @@
-//It's the dataset. It is initialized with Iterator and provides 
-//functions for statistical analysis of the text elements (Strings). 
-//NOTE: You may choose any data structure to store the processed data. 
-//The choice will affect the amount of code you will have to write.
-
 package application;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
+
+import iterators.WordIterator;
 
 
 
 public class StatisticalAnalysis {
     
-    private List<String> elements;
-// dodać iterator jako pole
-    public StatisticalAnalysis(Iterator<String> iterator) {
-        elements = new ArrayList<String>(); // dać listę z iteratora?
-    };
+    private HashMap<String, Integer> elementsCount;
+    private HashMap<String, String> results;
+    private Iterator<String> iterator;
     
-    private void turnStringToList(String content) {
+    public StatisticalAnalysis(Iterator<String> iterator) {
+        this.iterator = iterator;
+        elementsCount = new HashMap<>();
+        results = new HashMap<>();
 
+        countElementsToHashmap();
+        
+        if (this.iterator instanceof WordIterator) {
+            getResultsForWords();
+        } else {
+            getResultsForChars();
+        }
+
+        View.print(results);
+    };
+
+    private void countElementsToHashmap() {
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            elementsCount.putIfAbsent(element, 0);
+            elementsCount.put(element, elementsCount.get(element) + 1);
+        }
+    }
+
+    private void getResultsForChars() {
+        int countOfVowels = countOf("A", "E", "I", "O", "U", "Y");
+        results.put("Vowels count", Integer.toString(countOfVowels));
+    }
+
+    private void getResultsForWords() {
+        int countOfLove = countOf("LOVE");
+        results.put("'LOVE' count", Integer.toString(countOfLove));
     }
 
     public int countOf(String... elems) {
-        //Returns sum of all occurrences (in the dataset) of the elements 
-        //given as arguments ( elems). 
-        //Note: One string may be given as well. 
-        //The three-dots operator will help you pass variable number of 
-        //arguments to the function and access them with ease.
-
-        //https://docs.oracle.com/javase/tutorial/java/javaOO/arguments.html#varargs
-
-        int test = 0;
-        return test;
+        int count = 0;
+        for (String s: elems) {
+            if (elementsCount.containsKey(s)) {
+                count += elementsCount.get(s);
+            }
+        }
+        return count;
     }
 
     public int dictionarySize() {
