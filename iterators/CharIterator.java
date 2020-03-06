@@ -1,9 +1,11 @@
+package iterators;
+
 import java.util.Iterator;
 
 public class CharIterator implements Iterator<String> {
 
     public CharIterator(FileContent fileContent) {
-        
+
     }
 
     @Override

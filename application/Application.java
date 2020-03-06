@@ -1,4 +1,7 @@
+package application;
+
 import java.util.Iterator;
+import iterators.*;
 
 public class Application {
     
@@ -6,7 +9,8 @@ public class Application {
         IterableText fileContent = new FileContent(args[0]);
         Iterator<String> wordIterator = fileContent.wordIterator();
         Iterator<String> charIterator = fileContent.charIterator();
-        // StatisticalAnalysis() - co przekazujemy jako argument???
+        StatisticalAnalysis wordAnalysis = new StatisticalAnalysis(wordIterator);
+        StatisticalAnalysis charAnalysis = new StatisticalAnalysis(charIterator);
     }
 }
 

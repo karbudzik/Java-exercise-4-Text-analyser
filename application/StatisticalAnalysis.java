@@ -3,6 +3,8 @@
 //NOTE: You may choose any data structure to store the processed data. 
 //The choice will affect the amount of code you will have to write.
 
+package application;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;

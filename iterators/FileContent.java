@@ -1,12 +1,15 @@
+package iterators;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.Scanner;
 
 public class FileContent implements IterableText {
-
+    
     private String fileName;
-    private String fileContent; // czy w ogóle potrzebuję tego i readFile?
+    
+    private String fileContent;
 
     public FileContent(String name) {
         fileName = name;
