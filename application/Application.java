@@ -1,19 +1,26 @@
 package application;
 
+import java.io.FileNotFoundException;
 import java.util.Iterator;
 import iterators.*;
 
 public class Application {
     
     public static void main(String[] args){
-        FileContent fileContent = new FileContent(args[0]); // jak dawałam IterableText to mi nie pozwalało używać nowych metod
-        View.printName(fileContent.getFileName());
+        try {
+            FileContent fileContent = new FileContent("test.txt"); // jak dawałam IterableText to mi nie pozwalało używać nowych metod
+            View.printName(fileContent.getFileName());
+            // zamknąć to w zgrabniejszą metodę:
+            Iterator<String> wordIterator = fileContent.wordIterator();
+            new StatisticalAnalysis(wordIterator);
+            
+            Iterator<String> charIterator = fileContent.charIterator();
+            new StatisticalAnalysis(charIterator); 
+        } catch (FileNotFoundException e) {
+            View.print("File not found!!!!!!!");
+        }
         
-        Iterator<String> wordIterator = fileContent.wordIterator();
-        StatisticalAnalysis wordAnalysis = new StatisticalAnalysis(wordIterator);
         
-        Iterator<String> charIterator = fileContent.charIterator();
-        StatisticalAnalysis charAnalysis = new StatisticalAnalysis(charIterator); 
     }
 }
 

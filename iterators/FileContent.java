@@ -5,19 +5,22 @@ import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.Scanner;
 
+// czy jest plik
+// czy plik nie jest pusty
+// prawidłowość wyliczeń
+// więcej nazw czy akceptuje (?)
+// różne wielkości znaków?
+
 public class FileContent implements IterableText {
     
     private String fileName;
     String fileContentString;
 
-    public FileContent(String name) {
+    public FileContent(String name) throws FileNotFoundException {
         fileName = name;
         fileContentString = "";
-        try {
-            readFile(fileName);
-        } catch (FileNotFoundException e) {
-            System.out.println("There is no such file");
-        }
+       
+        readFile(fileName);
     }
 
     private void readFile(String name) throws FileNotFoundException {

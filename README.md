@@ -1,5 +1,5 @@
 ## Sample output
-`---text1.tx--- `    name of the analyzed file
+<!-- `---text1.tx--- `    name of the analyzed file -->
 
 `Char count: 761674`  number of characters in the file (without white-spaces)
 
@@ -9,11 +9,11 @@
 
 `Most used words (>1%): [a,and,had..<more>]` all words that make up for more than 1% of the text
 
-`'love' count: 60` number of times that the word ‘love’ occurred
+<!-- `'love' count: 60` number of times that the word ‘love’ occurred
 
 `'hate' count: 4` number of times that the word ‘hate’ occurred**
 
-`'music' count: 4` number of times that the word ‘music’ occurred
+`'music' count: 4` number of times that the word ‘music’ occurred -->
 
 `vowels %: 38` what part of all characters are vowels (a,o,i,e,u)
 

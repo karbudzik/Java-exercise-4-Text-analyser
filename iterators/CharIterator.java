@@ -10,7 +10,7 @@ public class CharIterator implements Iterator<String> {
     
     public CharIterator(FileContent fileContent) {
         this.fileContentString = fileContent.fileContentString.toUpperCase();
-        this.fileContentString.replaceAll("\\s+", "");
+        this.fileContentString = fileContentString.replaceAll("\\s+", "");
         fileContentArray = fileContentString.split("");
         count = 0;
     }

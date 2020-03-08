@@ -7,8 +7,6 @@ import java.util.Set;
 
 import iterators.WordIterator;
 
-
-
 public class StatisticalAnalysis {
     
     private HashMap<String, Integer> elementsCount;
@@ -41,19 +39,29 @@ public class StatisticalAnalysis {
 
     private void getResultsForChars() {
         int countOfVowels = countOf("A", "E", "I", "O", "U", "Y");
+        int countOfChars = size();
+        int percentageOfVowels = countOfVowels * 100 / countOfChars;
+
+        results.put("Char count", Integer.toString(countOfChars));
         results.put("Vowels count", Integer.toString(countOfVowels));
+        results.put("Vowels %", Integer.toString(percentageOfVowels));
     }
 
     private void getResultsForWords() {
-        int countOfLove = countOf("LOVE");
-        results.put("'LOVE' count", Integer.toString(countOfLove));
+        int countOfLove = countOf("love");
+        int countOfHate = countOf("hate");
+        int countOfMusic = countOf("music");
+
+        results.put("'love' count", Integer.toString(countOfLove));
+        results.put("'hate' count", Integer.toString(countOfHate));
+        results.put("'music' count", Integer.toString(countOfMusic));
     }
 
     public int countOf(String... elems) {
         int count = 0;
         for (String s: elems) {
-            if (elementsCount.containsKey(s)) {
-                count += elementsCount.get(s);
+            if (elementsCount.containsKey(s.toUpperCase())) {
+                count += elementsCount.get(s.toUpperCase());
             }
         }
         return count;
@@ -69,11 +77,12 @@ public class StatisticalAnalysis {
     }
 
     public int size() {
-        //Returns the total number of all elements in the dataset. 
-        //This will be total number of words or total number of characters.
+        int size = 0;
+        for (int number: elementsCount.values()) {
+            size += number;
+        }
 
-        int test = 0;
-        return test;
+        return size;
     }
 
     public Set<String> occurMoreThan(Integer n) {
