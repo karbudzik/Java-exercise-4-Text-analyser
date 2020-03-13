@@ -1,11 +1,11 @@
 ## Sample output
 <!-- `---text1.tx--- `    name of the analyzed file -->
 
-`Char count: 761674`  number of characters in the file (without white-spaces)
+<!-- `Char count: 761674`  number of characters in the file (without white-spaces) -->
 
-`Word count: 188912`  number of words in the file
+<!-- `Word count: 188912`  number of words in the file -->
 
-`Dict size: 10762`  dictionary size: number of different words used
+<!-- `Dict size: 10762`  dictionary size: number of different words used -->
 
 `Most used words (>1%): [a,and,had..<more>]` all words that make up for more than 1% of the text
 
