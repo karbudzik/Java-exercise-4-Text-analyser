@@ -6,29 +6,41 @@ import iterators.*;
 
 public class Application {
     
-    public static void main(String[] args){
+    private String fileName;
+
+    public Application(String fileName) {
+        this.fileName = fileName;
+    }
+    
+    public void run(){
         try {
-            FileContent fileContent = new FileContent("test.txt"); // jak dawałam IterableText to mi nie pozwalało używać nowych metod
+            long startTime = startTime();
+            FileContent fileContent = new FileContent(fileName);
             View.printName(fileContent.getFileName());
-            // zamknąć to w zgrabniejszą metodę:
-            Iterator<String> wordIterator = fileContent.wordIterator();
-            new StatisticalAnalysis(wordIterator);
-            
-            Iterator<String> charIterator = fileContent.charIterator();
-            new StatisticalAnalysis(charIterator); 
+            conductAnalysis(fileContent);
+            Double timeOfExacution = measureTimeOfExecution(startTime);
+            View.print(String.format("Time of execution: %.3f seconds", timeOfExacution));
         } catch (FileNotFoundException e) {
-            View.print("File not found!!!!!!!");
-        }
-        
-        
+            View.print(String.format("File %s not found!", fileName));
+        }   
+    }
+
+    private void conductAnalysis(FileContent fileContent) {
+        Iterator<String> wordIterator = fileContent.wordIterator();
+        new StatisticalAnalysis(wordIterator);    
+        Iterator<String> charIterator = fileContent.charIterator();
+        new StatisticalAnalysis(charIterator); 
+    }
+
+    private long startTime() {
+        return System.nanoTime();
+    }
+
+    private Double measureTimeOfExecution(long startTime) {
+        long endTime = System.nanoTime();
+        Double startTimeDouble = Double.valueOf(startTime);
+        Double endTimeDouble = Double.valueOf(endTime);
+    
+        return (endTimeDouble - startTimeDouble) / 1000000000.0;
     }
 }
-
-
-
-// Do iterowania po większej ilości argumentów:
-// for (int i = 0; i < args.length; i++) {
-//     System.out.println(args[i]);
-// }
-
-// Dorobić "measuring time of execution";

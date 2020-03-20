@@ -42,12 +42,11 @@ public class StatisticalAnalysis {
         int countOfChars = size();
         int percentageOfVowels = countOfVowels * 100 / countOfChars;
         double ratio = Double.valueOf(countOf("A")) / Double.valueOf(countOf("E"));
-        // czemu zły wynik???
 
         results.put("Char count", Integer.toString(countOfChars));
         results.put("Vowels count", Integer.toString(countOfVowels));
         results.put("Vowels %", Integer.toString(percentageOfVowels));
-        results.put("'a' to 'e' ratio", Double.toString(ratio));
+        results.put("'a' to 'e' ratio", String.format("%.3f", ratio));
     }
 
     private void getResultsForWords() {
