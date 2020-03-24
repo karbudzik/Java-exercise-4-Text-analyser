@@ -1,9 +1,9 @@
 package application;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.TreeSet;
 
 import iterators.WordIterator;
 
@@ -38,7 +38,7 @@ public class StatisticalAnalysis {
     }
 
     private void getResultsForChars() {
-        int countOfVowels = countOf("A", "E", "I", "O", "U", "Y");
+        int countOfVowels = countOf("A", "E", "I", "O", "U");
         int countOfChars = size();
         int percentageOfVowels = countOfVowels * 100 / countOfChars;
         double ratio = Double.valueOf(countOf("A")) / Double.valueOf(countOf("E"));
@@ -54,13 +54,14 @@ public class StatisticalAnalysis {
         int countOfUniqueWords = dictionarySize();
         int countOfLove = countOf("love");
         int countOfHate = countOf("hate");
-        int countOfMusic = countOf("music");
+        Set<String> mostUsedWords = occurMoreThan(1);
+        String mostUsedWordsString = String.join(", ", mostUsedWords);
         
         results.put("Word count", Integer.toString(countOfWords));
         results.put("Unique word count", Integer.toString(countOfUniqueWords));
         results.put("'love' count", Integer.toString(countOfLove));
         results.put("'hate' count", Integer.toString(countOfHate));
-        results.put("'music' count", Integer.toString(countOfMusic));
+        results.put("Most used words", mostUsedWordsString);
     }
 
     public int countOf(String... elems) {
@@ -88,10 +89,18 @@ public class StatisticalAnalysis {
     }
 
     public Set<String> occurMoreThan(Integer n) {
-        //Returns all the elements that occur more than _n __times _ in the dataset
-        
-        Set<String> test = new HashSet<>();
-        return test;
+        Set<String> newSet = new TreeSet<String>();
+        Double size = Double.valueOf(size());
+        Double percent = Double.valueOf(0);
+        Double value;
+        for (String key: elementsCount.keySet()) {
+            value = Double.valueOf(elementsCount.get(key));
+            percent = (value / size) * 100.0;
+            if (percent > n) {
+                newSet.add(key);
+            }
+        }
+        return newSet;
     }
 
     public HashMap<String, Integer> getElementsCount() {
