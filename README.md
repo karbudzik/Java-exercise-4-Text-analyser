@@ -58,8 +58,3 @@ Project is finished.
 
 ## Credits
 Project assigned and supervised by Codecool mentors.
-
-
-The main class of the program. It should allow the user to pass to text files for analysis as CLI arguments. Also, measure  the time of the program's execution. For example:
-
->  _java Application text1.txt text2.txt_
