@@ -65,7 +65,7 @@ public class StatisticalAnalysis {
         }
     }
 
-    public int countOf(String... elems) {
+    private int countOf(String... elems) {
         int count = 0;
         for (String s: elems) {
             if (elementsCount.containsKey(s.toUpperCase())) {
@@ -75,12 +75,12 @@ public class StatisticalAnalysis {
         return count;
     }
 
-    public int dictionarySize() {
+    private int dictionarySize() {
         int dictSize = elementsCount.size();
         return dictSize;
     }
 
-    public int size() {
+    private int size() {
         int size = 0;
         for (int number: elementsCount.values()) {
             size += number;
@@ -89,7 +89,7 @@ public class StatisticalAnalysis {
         return size;
     }
 
-    public Set<String> occurMoreThan(Integer n) {
+    private Set<String> occurMoreThan(Integer n) {
         Set<String> newSet = new TreeSet<String>();
         Double size = Double.valueOf(size());
         Double percent = Double.valueOf(0);
