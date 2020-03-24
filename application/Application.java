@@ -19,7 +19,7 @@ public class Application {
             View.printName(fileContent.getFileName());
             conductAnalysis(fileContent);
             Double timeOfExacution = measureTimeOfExecution(startTime);
-            View.print(String.format("Time of execution: %.3f seconds", timeOfExacution));
+            View.print(String.format("Time of execution: %.3f seconds\n", timeOfExacution));
         } catch (FileNotFoundException e) {
             View.print(String.format("File %s not found!", fileName));
         }   
@@ -27,9 +27,11 @@ public class Application {
 
     private void conductAnalysis(FileContent fileContent) {
         Iterator<String> wordIterator = fileContent.wordIterator();
-        new StatisticalAnalysis(wordIterator);    
+        StatisticalAnalysis wordAnalysis = new StatisticalAnalysis(wordIterator);
+        wordAnalysis.runAnalysis();
         Iterator<String> charIterator = fileContent.charIterator();
-        new StatisticalAnalysis(charIterator); 
+        StatisticalAnalysis charAnalysis = new StatisticalAnalysis(charIterator); 
+        charAnalysis.runAnalysis();
     }
 
     private long startTime() {

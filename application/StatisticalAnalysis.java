@@ -17,17 +17,14 @@ public class StatisticalAnalysis {
         this.iterator = iterator;
         elementsCount = new HashMap<>();
         results = new HashMap<>();
-
-        countElementsToHashmap();
-        
-        if (this.iterator instanceof WordIterator) {
-            getResultsForWords();
-        } else {
-            getResultsForChars();
-        }
-
-        View.print(results);
     };
+
+    public void runAnalysis() {
+        countElementsToHashmap();
+        calculateResultsForWords();            
+        getResultsForChars();
+        printResults();
+    }
 
     private void countElementsToHashmap() {
         while (iterator.hasNext()) {
@@ -38,30 +35,34 @@ public class StatisticalAnalysis {
     }
 
     private void getResultsForChars() {
-        int countOfVowels = countOf("A", "E", "I", "O", "U");
-        int countOfChars = size();
-        int percentageOfVowels = countOfVowels * 100 / countOfChars;
-        double ratio = Double.valueOf(countOf("A")) / Double.valueOf(countOf("E"));
+        if (iterator instanceof WordIterator) {
+            int countOfVowels = countOf("A", "E", "I", "O", "U");
+            int countOfChars = size();
+            int percentageOfVowels = countOfVowels * 100 / countOfChars;
+            double ratio = Double.valueOf(countOf("A")) / Double.valueOf(countOf("E"));
 
-        results.put("Char count", Integer.toString(countOfChars));
-        results.put("Vowels count", Integer.toString(countOfVowels));
-        results.put("Vowels %", Integer.toString(percentageOfVowels));
-        results.put("'a' to 'e' ratio", String.format("%.3f", ratio));
+            results.put("Char count", Integer.toString(countOfChars));
+            results.put("Vowels count", Integer.toString(countOfVowels));
+            results.put("Vowels %", Integer.toString(percentageOfVowels));
+            results.put("'a' to 'e' ratio", String.format("%.3f", ratio));
+        }
     }
 
-    private void getResultsForWords() {
-        int countOfWords = size();
-        int countOfUniqueWords = dictionarySize();
-        int countOfLove = countOf("love");
-        int countOfHate = countOf("hate");
-        Set<String> mostUsedWords = occurMoreThan(1);
-        String mostUsedWordsString = String.join(", ", mostUsedWords);
-        
-        results.put("Word count", Integer.toString(countOfWords));
-        results.put("Unique word count", Integer.toString(countOfUniqueWords));
-        results.put("'love' count", Integer.toString(countOfLove));
-        results.put("'hate' count", Integer.toString(countOfHate));
-        results.put("Most used words", mostUsedWordsString);
+    private void calculateResultsForWords() {
+        if (iterator instanceof WordIterator) {
+            int countOfWords = size();
+            int countOfUniqueWords = dictionarySize();
+            int countOfLove = countOf("love");
+            int countOfHate = countOf("hate");
+            Set<String> mostUsedWords = occurMoreThan(1);
+            String mostUsedWordsString = String.join(", ", mostUsedWords);
+            
+            results.put("Word count", Integer.toString(countOfWords));
+            results.put("Unique word count", Integer.toString(countOfUniqueWords));
+            results.put("'love' count", Integer.toString(countOfLove));
+            results.put("'hate' count", Integer.toString(countOfHate));
+            results.put("Most used words", mostUsedWordsString);
+        }
     }
 
     public int countOf(String... elems) {
@@ -103,6 +104,10 @@ public class StatisticalAnalysis {
         return newSet;
     }
 
+    private void printResults() {
+        View.print(results);
+    }
+
     public HashMap<String, Integer> getElementsCount() {
         return elementsCount;
     }
@@ -111,5 +116,3 @@ public class StatisticalAnalysis {
         return results;
     }
 }
-
-// spr co musi być prywatne a co nie?

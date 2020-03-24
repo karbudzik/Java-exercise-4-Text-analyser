@@ -1,3 +1,65 @@
+# Java exercise 4 - Text Analyser
+
+2-weeks pair assignment aiming at creating Battleships game with focus on Java classes and their inharitance. During 2-days extra workshops the basic version of playing with computer was added.
+
+## General info
+The game has 3 basic modes: human vs. human, human vs. computer and computer vs computer.
+
+In human mode the game preparation mode is enabled. Program asks each player for name and for placing ships on their map.
+
+!["Placing ships on the ocean"](img/1.png)
+
+The process of adding ships is fully validated, both in terms of proper input as well as placing ships on allowed squares.
+
+!["Input validation"](img/2.png)
+
+When ships are placed, the actual games starts. Players take turns on shooting to each other's ships. Players are informed if they hit or missed the ship.
+
+!["Playing game"](img/3.png)
+
+Game also have modes to play with computer. They are available to play. However, only the easiest computer mode is enabled, which means that computer shoots ships fully randomly. Other modes might be added in the future.
+
+## UML class diagram
+This assignment aimed at planning project in terms of using proper (logical and scalable) classes and methods. Therefore, the UML class diagram has been created and modified while working on the project
+
+!["Project UML Diagram"](img/Battleship.png)
+
+## Technologies
+* Java SE 13
+
+## Lessons learned from the assignment
+* Using abstract classes, method inheritance and protected variable scope
+* Carefully planning class usage and work division in group
+
+## Status
+Project is finished, with potential to be developed further in the future.
+
+## Credits
+Project assigned and supervised by Codecool mentors.
+
+## Technical specification:
+
+### __[main](specifications/main.md)__
+
+### __[square](specifications/square.md)__
+
+### __[ship](specifications/ship.md)__
+
+### __[ocean](specifications/ocean.md)__
+
+### __[game](specifications/game.md)__
+
+### __[player](specifications/player.md)__
+
+### __[view](specifications/view.md)__
+
+
+# uml narzucony (implement all classes exactly how they're presented in the class diagram.)
+# default access modifiers, packages
+# implementing iterator interface
+# sample output
+# first approach to unit testing
+
 ## Sample output
 <!-- `---text1.tx--- `    name of the analyzed file -->
 
@@ -21,26 +83,6 @@
 
 `[ G -> 2.16] [ R -> 5.36] ....<and the rest>` % of in whole text of all the letters
 
-# Requirements
-1. The main goal is to implement all classes exactly how they're presented in the class diagram. Please, analyse it carefully multiple times and make sure that your implementation is compatibly with it at the end.
-2. Don't focus to much on the validity of your results. For now, the software design is your priority,
-3. Remember about different kind access modifiers. Small tip: you need to use the default access modifier to implement the code according to the UML class diagram.
-4. Private methods are not shown on the diagram. You are free to implement any necessary/helpful private methods in any class.
-5. Use the Iterator interface from java.util. You don’t have to create your own.
-6. **The input files will only consist of alphabetic characters and white spaces.**
-7. The input file will consist both upper and lower case characters. You should use only one case to ensure that the results of the analysis will be consistent.
-8. Handle only those exceptions which are required to be handled by the functions and methods you use.
-9. The structure of packages tree is not restricted by anything but clean code principles.
-10. Don't think too much about the idea of interfaces. Just do it. We'll discuss  this topic later.
-
-# Description
-
-
-##  IterableText
- It's an interface. Create the interface with required methods signuteres.
-
-## FileContent
-class responsible for reading text files and providing its content through implementing **IterableText ** interface. The content will be provided through methods **charIterator() ** and **wordIterator().**
 
 ## CharIterator
  successively iterates over alphabetic characters (single letters) of the text. It skips all other characters (like white-spaces). Implements next() and hasNext() from **Iterator ** interface. NOTE: Chars are represented as Strings for the sake of simplicity. Remember that characters’ case (UPPER or lower) should be consistent in our analysis.
