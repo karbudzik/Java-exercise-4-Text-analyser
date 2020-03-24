@@ -20,6 +20,7 @@ public class StatisticalAnalysisTest {
 
         // when:
         StatisticalAnalysis analysis = new StatisticalAnalysis(fakeCharIterator);
+        analysis.runAnalysis();
         int numberOfElems = analysis.getElementsCount().size();
         
         // then:

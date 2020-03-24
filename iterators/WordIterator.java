@@ -23,6 +23,5 @@ public class WordIterator implements Iterator<String> {
     public String next() {
         return fileContentArray[count++];
     }
-
 }
    

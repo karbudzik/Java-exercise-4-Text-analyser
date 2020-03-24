@@ -24,6 +24,4 @@ public class CharIterator implements Iterator<String> {
     public String next() {
         return fileContentArray[count++];
     }
-
 }
-// czemu nie każe mi implementować np. remove?
